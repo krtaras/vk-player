@@ -1,0 +1,480 @@
+.vk-extension {
+	width: 450px;
+	height: 420px;
+	background-color: white;
+	margin: 0px;
+	font-size: 11px;
+
+}
+
+.vk-extension .under-construction {
+	text-align: center;
+    color: gainsboro;
+    font-size: 45px;
+    font-style: italic;
+    font-family: sans-serif;
+}
+
+.vk-extension .under-construction i {
+	font-size: 250px;
+}
+
+@-webkit-keyframes spinne {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinne {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.vk-extension .spinner:not(:required) {
+	-moz-animation: spinne 1250ms infinite linear;
+	-webkit-animation: spinne 1250ms infinite linear;
+	animation: spinne 1250ms infinite linear;
+	border: 10px solid #7191B3;
+	border-right-color: transparent;
+	border-radius: 50%;
+	box-sizing: border-box;
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	text-indent: -9999px;
+	width: 100px;
+	height: 100px;
+	margin-left: 137px;
+	margin-top: 160px;
+}
+
+.vk-extension .hidden {
+	display: none;
+}
+
+.vk-extension ::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+.vk-extension ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.2); 
+    border-radius: 10px;
+}
+ 
+.vk-extension ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+
+.vk-extension .row {
+	margin-bottom: 0px;
+}
+
+.vk-extension .left-panel {
+	background-color: #507195;
+	color: white;
+	height: 100%;
+	padding: 0px;
+	border-right: 2px solid #365475;
+}
+
+.vk-extension .left-panel .main-menu {
+	font-size: 16px;
+	text-align: center;
+}
+
+.vk-extension .left-panel .main-menu .circle {
+	border-radius: 50%;
+}
+
+.vk-extension .left-panel .main-menu i {
+	font-size: 42px;
+}
+
+.vk-extension .left-panel .main-menu .col {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+
+.vk-extension .left-panel .main-menu .col:hover {
+	background-color: #365475;
+}
+
+.vk-extension .left-panel .main-menu .active {
+	background-color: #365475;
+}
+
+.vk-extension .main-panel {
+	padding: 0px;
+	height: 100%;
+	background-color: white;
+	color: black;
+}
+
+.vk-extension .player {
+	background-color: #507195;
+	color: white;
+	padding: 2px;
+}
+
+.vk-extension .player .controls {
+	/*overflow: auto;*/
+	width: 100%;
+}
+
+.vk-extension .player .title {
+	font-size: 12px;
+	font-weight: bold;
+	font-family: monospace;
+	float: left;
+	max-width: 242px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 15px;
+	white-space: nowrap;
+	padding-top: 3px;
+    padding-left: 2px;
+}
+
+.vk-extension .player .pl-actions {
+	display: flex;
+    width: 125px;
+    float: right;
+}
+
+.vk-extension .player .pl-actions i {
+	font-size: 18px;
+}
+
+.vk-extension .player .controls .time {
+	font-size: 12px;
+    color: white;
+    padding: 5px;
+}
+
+.vk-extension .player .sd-actions {
+	display: flex;
+}
+
+.vk-extension .player .sd-actions i {
+	cursor: pointer;
+	font-size: 24px;
+}
+
+.vk-extension .player .sd-actions i:hover {
+	color: #365475;
+}
+
+.vk-extension .player input[type=range]{
+    -webkit-appearance: none;
+    border: none;
+	background-color: transparent;
+	width: 100%;
+}
+
+.vk-extension .player input[type=range]::-webkit-slider-runnable-track {
+    border: none;
+	height: 4px;
+	background: #c2c0c2;
+}
+
+.vk-extension .player input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background: #365475;
+    margin-top: -3px;
+}
+
+.vk-extension .player input[type=range]:focus {
+    outline: none;
+}
+
+
+.vk-extension .audios {
+	height: 370px;
+}
+
+.vk-extension .audios .col {
+	padding: 0px;
+}
+
+.vk-extension .audios .title {
+	padding-left: 5px;
+    background-color: #F0F1F2;
+    font-size: 12px;
+    color: #365475;
+    font-weight: bold;
+}
+
+.vk-extension .audios .albums {
+	padding-top: 5px;
+}
+
+.vk-extension .audios .albums .album {
+	font-size: 11px;
+	padding: 5px;
+	color: #365475;
+	cursor: pointer;
+	font-weight: bold;
+	overflow: hidden;
+    text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.vk-extension .audios .albums .album:hover {
+	background-color: #F0F1F2;
+}
+
+.vk-extension .audios .albums .album.active {
+	background-color: #F0F1F2;
+}
+
+
+.vk-extension .audios .playlist {
+	padding-top: 5px;
+	overflow-y: scroll;
+    height: 100%;
+	max-height: 350px;
+}
+
+.vk-extension .audios .sound {
+    overflow: auto;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.vk-extension .audios .sound:hover {
+	background-color: #F0F1F2;
+}
+
+.vk-extension .audios .sound.active {
+	background-color: #F0F1F2;
+}
+
+.vk-extension .audios .sound .name {
+	float: left;
+    color: #365475;
+	font-weight: bold;
+	overflow: hidden;
+    text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 190px;
+}
+
+.vk-extension .audios .sound .play {
+	float: right;
+    background-color: #507195;
+    color: white;
+    border-radius: 5px;
+	cursor: pointer;
+}
+
+.vk-extension .audios .sound .play:hover {
+	background-color: #365475;
+}
+
+.vk-extension .audios .sound .play i {
+	font-size: 18px;
+}
+
+.vk-extension .news {
+	height: 100%;
+	max-height: 470px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.vk-extension .news a {
+	text-decoration: none;
+}
+
+.vk-extension .news .post {
+	padding: 10px;
+    font-size: 12px;
+	cursor: pointer;
+	text-decoration: none;
+	overflow: auto;
+} 
+
+.vk-extension .news .post:hover {
+	background-color: #F0F1F2;
+}
+
+.vk-extension .news .post .title {
+	color: #365475;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.vk-extension .news .post .description {
+	text-align: justify;
+	max-height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	white-space: normal;
+	color: black;
+}
+
+.vk-extension .news .post .attachment {
+	text-align: center;
+}
+
+.vk-extension .news .post .attachment img {
+	margin-top: 5px;
+	max-height: 200px;
+	max-width: 350px;
+}
+
+.vk-extension .messages {
+	height: 420px;
+}
+
+.vk-extension .messages .col {
+	padding: 0px;
+}
+
+.vk-extension .messages .title {
+	padding-left: 5px;
+    background-color: #F0F1F2;
+    font-size: 12px;
+    color: #365475;
+    font-weight: bold;
+}
+
+.vk-extension .messages .dialogs {
+	margin-top: 5px;
+	padding-top: 5px;
+	overflow-y: scroll;
+    height: 389px;
+    overflow-x: hidden;
+	margin-bottom: 5px;
+	margin-right: 2px;
+}
+
+.vk-extension .messages .dialogs .dialog {
+	font-size: 11px;
+	padding: 5px;
+	color: #365475;
+	cursor: pointer;
+	font-weight: bold;
+	overflow: hidden;
+    text-overflow: ellipsis;
+	display: flex;
+}
+
+.vk-extension .messages .dialogs .dialog:hover {
+	background-color: #F0F1F2;
+}
+
+.vk-extension .messages .dialogs .dialog.active {
+	background-color: #F0F1F2;
+}
+
+.vk-extension .messages .dialogs .dialog .prf-img {
+    float: left;
+}
+
+.vk-extension .messages .dialogs .dialog .new-msg {
+    width: 16px;
+    float: right;
+    height: 20px;
+    margin-top: 8px;
+}
+
+.vk-extension .messages .dialogs .dialog .prf-name {
+	overflow: hidden;
+    float: left;
+    width: 80px;
+    line-height: 16px;
+    white-space: normal;
+    margin-top: -1px;
+    margin-left: 2px;
+	text-overflow: ellipsis;
+	max-height: 30px;
+}
+
+.vk-extension .messages .dialog-msgs {
+	padding-top: 5px;
+}
+
+.vk-extension .messages .dialog-msgs .msgs-list {
+	overflow-y: scroll;
+    height: 100%;
+	max-height: 350px;
+}
+
+.vk-extension .messages .dialog-msgs .msgs-list .msg {
+	padding-left: 5px;
+    padding-right: 5px;
+	margin-bottom: 10px;
+}
+
+.vk-extension .messages .dialog-msgs .msgs-list .msg .msg-title {
+	width: 100%;
+	overflow: auto;
+}
+
+.vk-extension .messages .dialog-msgs .msgs-list .msg .msg-title .name {
+	float: left;
+	color: #365475;
+	font-weight: bold;
+	font-size: 11px;
+}
+
+.vk-extension .messages .dialog-msgs .msgs-list .msg .msg-title .time {
+	float: right;
+	color: gray;
+    font-size: 11px;
+}
+
+.vk-extension .messages .dialog-msgs .msgs-list .msg .msg-text {
+	overflow: auto;
+    word-wrap: break-word;
+    text-align: justify;
+    font-size: 11px;
+}
+
+.vk-extension .messages .dialog-msgs .msgs-list .msg .msg-attachment img {
+    max-width: 235px;
+}
+
+.vk-extension .messages .dialog-msgs .msgs-send {
+	display: flex;
+	padding: 5px;
+	color: #507195;
+}
+
+.vk-extension .messages .dialog-msgs .msgs-send textarea {
+	width: 200px;
+    height: 40px;
+    border-color: #507195;
+	resize: none;
+}
+
+.vk-extension .messages .dialog-msgs .msgs-send i {
+	font-size: 32px;
+    margin-top: 5px;
+    margin-left: 5px;
+	cursor: pointer;
+}
+
+.vk-extension .messages .dialog-msgs .msgs-send i:hover {
+	color:#365475
+}
