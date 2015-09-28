@@ -1,70 +1,37 @@
-<div ng-controller="userAudioController">
-	<div class="row" style="margin: 0px;">
-		<div class="col s12" style="padding: 0px;">
-			<div class="player">
-				<div class="box">
-					<div class="controls">
-						<div class="title">
-							{{name}}
-						</div>
-						<div class="pl-actions">
-							<i ng-class='{"hidden":volume==0}' class="material-icons">&#xE050;</i>
-							<i ng-class='{"hidden":volume>0}' class="material-icons">&#xE04F;</i>
-							<input type="range" min="0" max="100" step="1" ng-model="volume" ng-change="volumeInFocus = true;" ng-mouseup="updatePlayerVolume();"/>
-						</div>
+<div class="row">
+	<div class="col s12" style="padding: 0px;">
+		<div class="row audios">
+			<div class="col s4">
+				<div class="title">
+					Альбоми
+				</div>
+				<div class="albums">
+					<div class="album" ng-class='{"active":activeAlbumId==-1}' ng-click="updateAudios(-1, -1);">
+						Усі композиції
 					</div>
-					<div class="controls" style="display:flex;">
-						<input type="range" min="0" max="10000" step="0.1" ng-model="range" ng-change="rangeInFocus = true;" ng-mouseup="updateTrackPosition();"/>
-						<label class="time">{{position | date:'mm:ss'}}</label>
-						<div class="sd-actions">
-							<i class="material-icons" ng-click="playBack();">&#xE020;</i>
-							<i class="material-icons" ng-click="stopPlay();">&#xE047;</i>
-							<i ng-class='{"hidden":isPlaying}' class="material-icons" ng-click="togglePlay();">&#xE037;</i>
-							<i ng-class='{"hidden":!isPlaying}' class="material-icons" ng-click="togglePlay();">&#xE034;</i>
-							<i class="material-icons" ng-click="playNext();">&#xE01F;</i>
+					<div ng-repeat="album in audioAlbums" class="album" ng-class='{"active":activeAlbumId=={{album.id}}}' ng-click="updateAudios(album.id);">
+						{{album.title}}
+					</div>
+				</div>
+			</div>
+			<div class="col s8" style="border-left: 1px solid #808080; height:100%;">
+				<div class="title">
+					Композиції
+				</div>
+				<div class="playlist">
+					<div ng-repeat="item in albumTracks" class="sound" ng-class='{"active":activeTrackId=={{item.id}}}'>
+						<div class="name">
+							{{item.title}}
+						</div>
+						<a class="play" href="{{item.url}}" download="{{item.title}}.mp3" style="margin-left: 5px;">
+							<i class="material-icons">&#xE2C4;</i>
+						</a>
+						<div class="play" ng-click="playTrack(item.id);" ng-class='{"hidden":activeTrackId=={{item.id}}}'>
+							<i class="material-icons">&#xE037;</i>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col s12" style="padding: 0px;">
-			<div class="row audios">
-				<div class="col s4">
-					<div class="title">
-						Альбоми
-					</div>
-					<div class="albums">
-						<div class="album" ng-class='{"active":activeAlbumId==-1}' ng-click="updateAudios(-1, -1);" >
-							Усі композиції
-						</div>
-						<div ng-repeat="album in audioAlbums" class="album" ng-class='{"active":activeAlbumId=={{album.id}}}' ng-click="updateAudios(album.id);">
-							{{album.title}}
-						</div>
-					</div>
-				</div>
-				<div class="col s8" style="border-left: 1px solid #808080; height:100%;">
-					<div class="title">
-						Композиції
-					</div>
-					<div class="playlist">
-						<div ng-repeat="item in albumTracks" class="sound" ng-class='{"active":activeTrackId=={{item.id}}}'>
-							<div class="name">
-								{{item.title}}
-							</div>
-							<a  class="play" href="{{item.url}}" download="{{item.title}}.mp3" style="margin-left: 5px;">
-								<i class="material-icons">&#xE2C4;</i>
-							</a>
-							<div class="play" ng-click="playTrack(item.id);" ng-class='{"hidden":activeTrackId=={{item.id}}}'>
-								<i class="material-icons">&#xE037;</i>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
-
 </div>

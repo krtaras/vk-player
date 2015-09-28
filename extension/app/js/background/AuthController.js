@@ -3,7 +3,7 @@ var AuthController = new (function () {
 	var access_token = "";
 	var current_user_id = "";
 	
-	this.connect = function (callBackSetCurrentUserProfile) {
+	this.connect = function () {
 		var clientId = "client_id=5064446";
 		var scope = "scope=audio,wall";
 		var redirectUrl = "redirect_uri=http%3A%2F%2Foauth.vk.com%2Fblank.html";
@@ -16,8 +16,6 @@ var AuthController = new (function () {
 						access_token = getTokenFromURL(changeInfo.url);
 						current_user_id = getUserId(changeInfo.url);
 						chrome.tabs.remove(tabId, function () { });
-						var filds = "photo_50";
-						APIHelper.getUserProfile(current_user_id, filds, access_token, callBackSetCurrentUserProfile)
 					}
 				}
 			});

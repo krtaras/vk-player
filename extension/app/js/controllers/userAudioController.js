@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    var app = angular.module('googleExtensionVK');
+    var app = angular.module('google-chrome-vk-palyer');
     var controllerName = 'userAudioController';
     var APIHelper = chrome.extension.getBackgroundPage().APIHelper;
     var AuthController = chrome.extension.getBackgroundPage().AuthController;
@@ -8,12 +8,11 @@
     app.controller(controllerName, ["$scope", "$sce",
         function UserAudioController($scope, $sce) {
             window.name = "AudioPlayer";
+            
             $scope.albumTracks = [];
             $scope.audioAlbums = [];
-
             $scope.activeAlbumId = -2;
             $scope.activeTrackId = -2;
-            
             $scope.position = 0;
             $scope.name = "";
             $scope.range = 0;
@@ -21,9 +20,29 @@
             $scope.tmpVomule = 0;
             $scope.isPlaying = false;
             $scope.isStoped = true;
-            
             $scope.rangeInFocus = false;
             $scope.volumeInFocus = false;
+            $scope.compactView = Player.settings.compactView;
+            $scope.includeTabsURL = "";
+            $scope.includeTabSrcURL = "";
+            
+            $scope.updateView = function() {
+                if (!$scope.compactView) {
+                    $scope.includeTabsURL = "/app/view/tabs.html";
+                    $scope.includeTabSrcURL = "/app/view/audios.html";
+                } else {
+                    $scope.includeTabsURL = "";
+                    $scope.includeTabSrcURL = "";
+                }
+            }
+   
+            $scope.updateView();
+            
+            $scope.setViewMode = function() {
+                $scope.compactView = !$scope.compactView;
+                Player.settings.compactView = $scope.compactView;
+                $scope.updateView();
+            }
             
             $scope.updateAlbums = function() {
                 APIHelper.getAudioAlbums(AuthController.getCurrentUserId(), AuthController.getAccessToken(), function(data){

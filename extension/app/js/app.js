@@ -1,8 +1,4 @@
 (function () {
     'use strict';
-     angular.module('googleExtensionVK', []);
+     angular.module('google-chrome-vk-palyer', []);
 })();
-
-function getSpinnerHtml() {
-    return '<div class="spinner"></div>';
-}

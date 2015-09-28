@@ -5,6 +5,11 @@ var Player = new (function () {
 		onready: function () {
 		}
 	});
+	
+	this.settings = {
+		compactView: false
+	}
+	
 	var playList = new Array();
 	var currentTrackIndex = -1;
 	var playerChangeListener;
