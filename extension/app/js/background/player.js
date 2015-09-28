@@ -5,9 +5,9 @@ var Player = new (function () {
 		onready: function () {
 		}
 	});
-	
 	this.settings = {
-		compactView: false
+		compactView: false,
+		activeTab: "my"
 	}
 	
 	var playList = new Array();

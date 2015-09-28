@@ -22,14 +22,15 @@
             $scope.isStoped = true;
             $scope.rangeInFocus = false;
             $scope.volumeInFocus = false;
-            $scope.compactView = Player.settings.compactView;
             $scope.includeTabsURL = "";
             $scope.includeTabSrcURL = "";
+            $scope.compactView = Player.settings.compactView;
+            $scope.activeTab = Player.settings.activeTab;
             
             $scope.updateView = function() {
                 if (!$scope.compactView) {
                     $scope.includeTabsURL = "/app/view/tabs.html";
-                    $scope.includeTabSrcURL = "/app/view/audios.html";
+                    $scope.includeTabSrcURL = "/app/view/" + $scope.activeTab + ".html";
                 } else {
                     $scope.includeTabsURL = "";
                     $scope.includeTabSrcURL = "";
@@ -41,6 +42,12 @@
             $scope.setViewMode = function() {
                 $scope.compactView = !$scope.compactView;
                 Player.settings.compactView = $scope.compactView;
+                $scope.updateView();
+            }
+            
+            $scope.openTab = function(tabName) {
+                $scope.activeTab = tabName;
+                Player.settings.activeTab = $scope.activeTab;
                 $scope.updateView();
             }
             

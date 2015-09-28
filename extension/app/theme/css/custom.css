@@ -241,6 +241,11 @@
 	text-decoration: underline;
 }
 
+.vk-player-extension .tabs .tab.active {
+	color: #365475;
+	text-decoration: underline;
+}
+
 .vk-player-extension .audios {
 	height: 370px;
 }

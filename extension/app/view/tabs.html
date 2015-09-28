@@ -1,11 +1,11 @@
 <div class="row tabs">
-	<div class="tab col s4">
+	<div ng-class='{"active":activeTab == "my"}' class="tab col s4" ng-click="openTab('my')">
 		Мої аудіозаписи
 	</div>
-	<div class="tab col s4">
+	<div ng-class='{"active":activeTab == "search"}' class="tab col s4" ng-click="openTab('search')">
 		Пошук
 	</div>
-	<div class="tab col s4">
+	<div ng-class='{"active":activeTab == "friends"}' class="tab col s4" ng-click="openTab('friends')">
 		Аудіозаписи друзів
 	</div>
 </div>
