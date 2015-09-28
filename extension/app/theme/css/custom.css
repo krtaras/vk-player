@@ -246,15 +246,15 @@
 	text-decoration: underline;
 }
 
-.vk-player-extension .audios {
+.vk-player-extension .my-music {
 	height: 370px;
 }
 
-.vk-player-extension .audios .col {
+.vk-player-extension .my-music .col {
 	padding: 0px;
 }
 
-.vk-player-extension .audios .title {
+.vk-player-extension .my-music .title {
 	padding-left: 5px;
     background-color: #F0F1F2;
     font-size: 12px;
@@ -262,11 +262,11 @@
     font-weight: bold;
 }
 
-.vk-player-extension .audios .albums {
+.vk-player-extension .my-music .albums {
 	padding-top: 5px;
 }
 
-.vk-player-extension .audios .albums .album {
+.vk-player-extension .my-music .albums .album {
 	font-size: 11px;
 	padding: 5px;
 	color: #365475;
@@ -277,37 +277,37 @@
 	white-space: nowrap;
 }
 
-.vk-player-extension .audios .albums .album:hover {
+.vk-player-extension .my-music .albums .album:hover {
 	background-color: #F0F1F2;
 }
 
-.vk-player-extension .audios .albums .album.active {
+.vk-player-extension .my-music .albums .album.active {
 	background-color: #F0F1F2;
 }
 
 
-.vk-player-extension .audios .playlist {
+.vk-player-extension .my-music .playlist {
 	padding-top: 5px;
 	overflow-y: scroll;
     height: 100%;
 	max-height: 350px;
 }
 
-.vk-player-extension .audios .sound {
+.vk-player-extension .my-music .sound {
     overflow: auto;
 	padding: 5px;
 	cursor: pointer;
 }
 
-.vk-player-extension .audios .sound:hover {
+.vk-player-extension .my-music .sound:hover {
 	background-color: #F0F1F2;
 }
 
-.vk-player-extension .audios .sound.active {
+.vk-player-extension .my-music .sound.active {
 	background-color: #F0F1F2;
 }
 
-.vk-player-extension .audios .sound .name {
+.vk-player-extension .my-music .sound .name {
 	float: left;
     color: #365475;
 	font-weight: bold;
@@ -317,7 +317,7 @@
 	max-width: 190px;
 }
 
-.vk-player-extension .audios .sound .play {
+.vk-player-extension .my-music .sound .play {
 	float: right;
     background-color: #507195;
     color: white;
@@ -325,10 +325,87 @@
 	cursor: pointer;
 }
 
-.vk-player-extension .audios .sound .play:hover {
+.vk-player-extension .my-music .sound .play:hover {
 	background-color: #365475;
 }
 
-.vk-player-extension .audios .sound .play i {
+.vk-player-extension .my-music .sound .play i {
+	font-size: 18px;
+}
+
+.vk-player-extension .search-music {
+	height: 370px;
+    overflow-y: scroll;
+}
+
+.vk-player-extension .search-music .search {
+	text-align: center;
+	padding: 5px;
+	background-color: #F0F1F2;
+}
+
+.vk-player-extension .search-music .search input {
+	width: 300px;
+    height: 16px;
+    font-size: 12px;
+    color: gray;
+}
+
+.vk-player-extension .search-music .search button {
+	background-color: #507195;
+    border: none;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    border-radius: 4px;
+    padding-top:  2px;
+	padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+	cursor: pointer;
+}
+
+.vk-player-extension .search-music .search button:hover {
+	background-color: #365475;
+}
+
+.vk-player-extension .search-music .sound {
+    overflow: auto;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.vk-player-extension .search-music .sound:hover {
+	background-color: #F0F1F2;
+}
+
+.vk-player-extension .search-music .sound.active {
+	background-color: #F0F1F2;
+}
+
+.vk-player-extension .search-music .sound .name {
+	float: left;
+    color: #365475;
+	font-weight: bold;
+	overflow: hidden;
+    text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 300px;
+}
+
+.vk-player-extension .search-music .sound .play {
+	float: right;
+    background-color: #507195;
+    color: white;
+    border-radius: 5px;
+	cursor: pointer;
+}
+
+.vk-player-extension .search-music .sound .play:hover {
+	background-color: #365475;
+}
+
+.vk-player-extension .search-music .sound .play i {
 	font-size: 18px;
 }

@@ -1,0 +1,21 @@
+<div class="row search-music">
+	<div class="row">
+		<div class="col s12 search">
+			<input type="text" ng-model="searchText"/>
+			<button ng-click="searchAudios(searchText)">Шукати</button>
+		</div>
+	</div>
+	<div class="row">
+		<div ng-repeat="item in albumTracks" class="sound" ng-class='{"active":activeTrackId=={{item.id}}}'>
+			<div class="name">
+				{{item.title}}
+			</div>
+			<a class="play" href="{{item.url}}" download="{{item.title}}.mp3" style="margin-left: 5px;">
+				<i class="material-icons">&#xE2C4;</i>
+			</a>
+			<div class="play" ng-click="playTrack(item.id);" ng-class='{"hidden":activeTrackId=={{item.id}}}'>
+				<i class="material-icons">&#xE037;</i>
+			</div>
+		</div>
+	</div>
+</div>

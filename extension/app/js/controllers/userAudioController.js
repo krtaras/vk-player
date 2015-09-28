@@ -68,6 +68,14 @@
                 });
             }
             
+            $scope.searchAudios = function(text) {
+                APIHelper.getAudioBySearchText(text, AuthController.getAccessToken(), function(data) {
+                    $scope.$apply(function(){
+                        $scope.albumTracks = data.response.items;
+                    });
+                });
+            }
+            
             $scope.updateTrackPosition = function() {
                 Player.updatePosition($scope.range);
                 $scope.rangeInFocus = false;

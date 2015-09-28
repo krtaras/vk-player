@@ -14,6 +14,11 @@ var APIHelper = new (function() {
 		callMethod(url, callbackFunc);
 	}
 	
+	this.getAudioBySearchText = function(text, access_token, callbackFunc) {
+		var url = "https://api.vk.com/method/audio.search?q=" + text + "&auto_complete=1&access_token=" + access_token + "&count=300&v=5.37";
+		callMethod(url, callbackFunc);
+	}
+	
 	var callMethod = function(url, callbackFunc) {
 		$.get(url, function(data){
 			callbackFunc(data);
