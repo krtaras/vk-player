@@ -5,7 +5,7 @@ var AuthController = new (function () {
 	
 	this.connect = function () {
 		var clientId = "client_id=5064446";
-		var scope = "scope=audio,wall";
+		var scope = "scope=offline,audio,wall,friends";
 		var redirectUrl = "redirect_uri=http%3A%2F%2Foauth.vk.com%2Fblank.html";
 		var authUrl = 'https://oauth.vk.com/authorize?' + clientId + '&' + scope + '&' + redirectUrl + '&display=page&response_type=token';	
 		chrome.tabs.create({ url: authUrl, selected: true }, function (tab) {
