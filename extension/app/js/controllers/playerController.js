@@ -4,6 +4,7 @@
     var controllerName = 'playerController';
     app.controller(controllerName, ["$scope",
         function PlayerController($scope) {
+            
 		}
 	]);
 })();
