@@ -1,0 +1,41 @@
+<body id="vk-player-extension" class="vk-player-extension" ng-controller="userAudioController">
+		<div class="row" style="margin: 0px;">
+			<div class="col s12" style="padding: 0px;">
+				<div class="player">
+					<div class="box" style="width: 373px;">
+						<div class="controls">
+							<div class="title">
+								{{name}}
+							</div> 
+							<div class="pl-actions">
+								<i ng-class='{"hidden":volume==0}' class="material-icons">&#xE050;</i>
+								<i ng-class='{"hidden":volume>0}' class="material-icons">&#xE04F;</i>
+								<input type="range" min="0" max="100" step="1" ng-model="volume" ng-change="volumeInFocus = true;" ng-mouseup="updatePlayerVolume();"/>
+							</div>
+						</div>
+						<div class="controls" style="display:flex;">
+							<input type="range" min="0" max="10000" step="0.1" ng-model="range" ng-change="rangeInFocus = true;" ng-mouseup="updateTrackPosition();"/>
+							<label class="time">{{position | date:'mm:ss'}}</label>
+							<div class="sd-actions">
+								<i class="material-icons" ng-click="playBack();">&#xE020;</i>
+								<i class="material-icons" ng-click="stopPlay();">&#xE047;</i>
+								<i ng-class='{"hidden":isPlaying}' class="material-icons" ng-click="togglePlay();">&#xE037;</i>
+								<i ng-class='{"hidden":!isPlaying}' class="material-icons" ng-click="togglePlay();">&#xE034;</i>
+								<i class="material-icons" ng-click="playNext();">&#xE01F;</i>
+							</div>
+						</div>
+					</div>
+					<div class="box additional-action" style="width: 20px;">
+						<div>
+							<i class="material-icons" style="font-size: 18px; margin-left:3px;">&#xE043;</i>
+						</div>
+						<div>
+							<i ng-class='{"active":!compactView}' class="material-icons" style="font-size: 24px;" ng-click="setViewMode()">&#xE8EF;</i>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+		<div ng-include="includeTabsURL"></div>
+		<div ng-include="includeTabSrcURL"></div>
+	</body>

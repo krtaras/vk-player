@@ -4,28 +4,30 @@
 		<script type="text/javascript" src="app/lib/jquery.min.js"></script>
 		<script type="text/javascript" src="app/js/app.js"></script>
 		<script type="text/javascript" src="app/js/controllers/userAudioController.js"></script>
+		<script type="text/javascript" src="app/js/controllers/playerController.js"></script>
 				
 		<link type="text/css" rel="stylesheet" href="app/theme/css/materialze-icons.css"  media="screen,projection"/>
 		<link type="text/css" rel="stylesheet" href="app/theme/css/custom.css"  media="screen,projection"/>
 	</head>
 	
-	<body id="vk-player-extension" class="vk-player-extension" ng-controller="userAudioController">
+	<body id="vk-player-extension" class="vk-player-extension" ng-controller="playerController">
 		<div class="row" style="margin: 0px;">
 			<div class="col s12" style="padding: 0px;">
 				<div class="player">
 					<div class="box" style="width: 373px;">
 						<div class="controls">
 							<div class="title">
-								{{name}}
+								{{sound.title}}
 							</div> 
 							<div class="pl-actions">
-								<i ng-class='{"hidden":volume==0}' class="material-icons">&#xE050;</i>
-								<i ng-class='{"hidden":volume>0}' class="material-icons">&#xE04F;</i>
-								<input type="range" min="0" max="100" step="1" ng-model="volume" ng-change="volumeInFocus = true;" ng-mouseup="updatePlayerVolume();"/>
+								{{}}
+								<i ng-class='{"hidden":player.volume==0}' class="material-icons">&#xE050;</i>
+								<i ng-class='{"hidden":player.volume>0}' class="material-icons">&#xE04F;</i>
+								<input type="range" min="0" max="100" step="1" ng-model="player.volume"/>
 							</div>
 						</div>
 						<div class="controls" style="display:flex;">
-							<input type="range" min="0" max="10000" step="0.1" ng-model="range" ng-change="rangeInFocus = true;" ng-mouseup="updateTrackPosition();"/>
+							<input type="range" min="0" max="1000" step="1" ng-model="range" ng-change="rangeInFocus = true;" ng-mouseup="updateTrackPosition();"/>
 							<label class="time">{{position | date:'mm:ss'}}</label>
 							<div class="sd-actions">
 								<i class="material-icons" ng-click="playBack();">&#xE020;</i>
@@ -47,7 +49,5 @@
 				</div>
 			</div>
 		</div>
-		<div ng-include="includeTabsURL"></div>
-		<div ng-include="includeTabSrcURL"></div>
 	</body>
 </html>
