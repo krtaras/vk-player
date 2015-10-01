@@ -6,17 +6,21 @@ var Player = new (function () {
 		}
 	});
 	
+	var playList = new Array();
+	var playingSound;
+	
 	this.state = {
 		sound: {
 			id: -1,
-			name: "",
+			title: "",
 			duration: 1000,
 			position: 0
 		},
 		player: {
 			onPause: false,
 			volume: 50,
-			randomPlay: false
+			isRandom: false,
+			isLoop: true
 		},
 		playlist: {
 			id: -1,
@@ -25,8 +29,140 @@ var Player = new (function () {
 			offset: 0,
 			index: 0,
 			maxCount: 0
+		},
+		customProperty: {
+			
 		}
 	}
+
+	this.setPlayList = function(id, name, count, offset, maxCount, sounds) {
+		if (offset == 0) {
+			playList = sounds;
+			Player.state.playlist.index = 0;
+		} else {
+			playList.push(sounds);
+		}
+		Player.state.playlist.id = id;
+		Player.state.playlist.name = name;
+		Player.state.playlist.count = count;
+		Player.state.playlist.maxCount = maxCount;
+		Player.state.playlist.offset = offset;
+	}
+	
+	this.playSoundById = function(soundId) {
+		Player.state.playlist.index = -1;
+		for (var i in playList) {
+			if (playList[i].id == soundId) {
+				Player.state.playlist.index = i;
+				break;
+			}
+		}
+		doPlay();
+	}
+	
+	this.playSoundByIndex = function(index, offset) {
+		Player.state.playlist.index = -1;
+		var sound = playList[index+offset];
+		if (typeof sound !== "undefined") {
+			Player.state.playlist.index = index+offset;
+		}
+		doPlay();
+	}
+
+	this.play = function () {
+		doPlay();
+	}
+
+	this.next = function () {
+		doNext();
+	}
+
+	this.prev = function () {
+		doPrev();
+	}
+
+	this.stop = function () {
+		doStop();
+	}
+
+	this.toggle = function () {
+		doToggle();
+	}
+
+	this.setPosition = function(position) {
+		var max = playingSound.duration;
+		var newPosition = (position * max) / 1000;
+		playingSound.setPosition(newPosition);
+	}
+	
+	this.setVolume = function(volume) {
+		Player.state.player.volume = volume;
+		playingSound.setVolume(Player.state.player.volume);
+	}
+
+	this.setRandomPlaying = function(isRandom) {
+		Player.state.player.isRandom = isRandom;
+	}
+	
+	var doPlay = function () {
+		doStop();
+		var sound = playList[Player.state.playlist.index];
+		playingSound = soundManager.createSound({
+			url: sound.url,
+			onplay: function () {
+				Player.state.sound.id = sound.id;
+				Player.state.sound.title = sound.title;
+				Player.state.sound.duration = playingSound.duration;
+				Player.state.player.onPause = false;
+			},
+			onfinish: function () {
+				doNext();
+			},
+			whileplaying: function () {
+				Player.state.sound.position = playingSound.position;
+			}
+		});
+		playingSound.setVolume(Player.state.player.volume);
+		playingSound.play();
+	}
+
+	var doStop = function () {
+		if (typeof playingSound !== "undefined") {
+			playingSound.destruct();
+		}
+	}
+	
+	var doNext = function () {
+		var next = Player.state.playlist.index + 1;
+		if (next >= playList.length) {
+			if (isLoop) {
+				Player.state.playlist.index = 0;
+			}
+		} else {
+			Player.state.playlist.index = next;
+		}
+		doPlay();
+	}
+
+	var doPrev = function () {
+		var prev = Player.state.playlist.index - 1;
+		if (prev < 0) {
+			if (isLoop) {
+				Player.state.playlist.index = playList.length - 1;
+			}
+		} else {
+			Player.state.playlist.index = prev;
+		}
+		doPlay();
+	}
+	
+	var doToggle = function () {
+		if (typeof playingSound !== "undefined") {
+			playingSound.togglePause();
+			Player.state.player.onPause = playingSound.paused;
+		}
+	}
+	
 	
 	
 	this.settings = {
@@ -75,25 +211,7 @@ var Player = new (function () {
 		doPlay();
 	}
 
-	this.play = function () {
-		doPlay();
-	}
-
-	this.next = function () {
-		doNext();
-	}
-
-	this.prev = function () {
-		doPrev();
-	}
-
-	this.stop = function () {
-		doStop();
-	}
-
-	this.toggle = function () {
-		doToggle();
-	}
+	
 	
 	this.updatePosition = function(range) {
 		var max = playingTrack.duration;
