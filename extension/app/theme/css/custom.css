@@ -161,6 +161,7 @@
 
 .vk-player-extension .player .pl-actions i {
 	font-size: 18px;
+	cursor: pointer;
 }
 
 .vk-player-extension .player .controls .time {

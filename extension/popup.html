@@ -20,15 +20,14 @@
 								{{sound.title}}
 							</div> 
 							<div class="pl-actions">
-								{{}}
-								<i ng-class='{"hidden":player.volume==0}' class="material-icons">&#xE050;</i>
-								<i ng-class='{"hidden":player.volume>0}' class="material-icons">&#xE04F;</i>
+								<i ng-class='{"hidden":(player.volume==0 || player.isMute)}' class="material-icons" ng-click="mute()">&#xE050;</i>
+								<i ng-class='{"hidden":(!player.isMute && player.volume>0)}' class="material-icons" ng-click="mute()">&#xE04F;</i>
 								<input type="range" min="0" max="100" step="1" ng-model="player.volume"/>
 							</div>
 						</div>
 						<div class="controls" style="display:flex;">
-							<input type="range" min="0" max="1000" step="1" ng-model="range" ng-change="rangeInFocus = true;" ng-mouseup="updateTrackPosition();"/>
-							<label class="time">{{position | date:'mm:ss'}}</label>
+							<input type="range" min="0" max="{{sound.duration}}" step="1" ng-model="sound.position"/>
+							<label class="time">{{sound.position | date:'mm:ss'}}</label>
 							<div class="sd-actions">
 								<i class="material-icons" ng-click="playBack();">&#xE020;</i>
 								<i class="material-icons" ng-click="stopPlay();">&#xE047;</i>
@@ -40,7 +39,7 @@
 					</div>
 					<div class="box additional-action" style="width: 20px;">
 						<div>
-							<i class="material-icons" style="font-size: 18px; margin-left:3px;">&#xE043;</i>
+							<i class="material-icons" style="font-size: 18px; margin-left:3px;" ng-click="setPlayList()">&#xE043;</i>
 						</div>
 						<div>
 							<i ng-class='{"active":!compactView}' class="material-icons" style="font-size: 24px;" ng-click="setViewMode()">&#xE8EF;</i>

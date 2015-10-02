@@ -3,6 +3,8 @@
     var app = angular.module('google-chrome-vk-palyer');
     var controllerName = 'playerController';
     var Player = chrome.extension.getBackgroundPage().Player;
+    var APIHelper = chrome.extension.getBackgroundPage().APIHelper;
+    var AuthController = chrome.extension.getBackgroundPage().AuthController;
     app.controller(controllerName, ["$scope", "$interval",
         function PlayerController($scope, $interval) {
             
@@ -30,6 +32,17 @@
             
             $scope.togglePlay = function() {
                 Player.toggle();
+            }
+            
+            $scope.mute = function() {
+                Player.mute();
+            }
+            
+            $scope.setPlayList = function() {
+                APIHelper.getAlbumTracks(AuthController.getCurrentUserId(), AuthController.getAccessToken(), -1, function(data) {
+                   var response = data.response;
+                   Player.setPlayList(-1, "TestPlayList", response.count, 0, response.count, response.items);
+                });
             }
             
             $interval(function() {

@@ -19,7 +19,8 @@ var Player = new (function () {
 			onPause: false,
 			volume: 50,
 			isRandom: false,
-			isLoop: true
+			isLoop: true,
+			isMute: false
 		},
 		playlist: {
 			id: -1,
@@ -106,6 +107,15 @@ var Player = new (function () {
 
 	this.setRandomPlaying = function(isRandom) {
 		Player.state.player.isRandom = isRandom;
+	}
+
+	this.mute = function() {
+		Player.state.player.isMute = !Player.state.player.isMute;
+		if (Player.state.player.isMute) {
+			playingSound.setVolume(0);
+		} else {
+			playingSound.setVolume(Player.state.player.volume);
+		}
 	}
 	
 	var doPlay = function () {
