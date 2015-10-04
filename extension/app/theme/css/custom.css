@@ -204,6 +204,7 @@
     border-radius: 50%;
     background: #365475;
     margin-top: -3px;
+	cursor: pointer;
 }
 
 .vk-player-extension .player input[type=range]:focus {

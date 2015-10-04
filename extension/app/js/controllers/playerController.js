@@ -14,28 +14,49 @@
             $scope.sound = $scope.state.sound;
             $scope.player = $scope.state.player;
             
-            $scope.updateVolume = function(volume) {
-                Player.setVolume(volume);
+            $scope.position = {
+                value:0,
+                onUpdate:false
             }
             
+            $scope.updateVolume = function() {
+                Player.setVolume($scope.player.volume);
+                $scope.refresh();
+            }
+           
             $scope.playNext = function() {
+                $scope.sound.title = "Loading...";
+                $scope.sound.position = 0;
                 Player.next();
+                $scope.refresh();
             }
             
             $scope.playBack = function() {
+                $scope.sound.title = "Loading...";
+                $scope.sound.position = 0;
                 Player.prev();
+                $scope.refresh();
             }
             
             $scope.stopPlay = function() {
                 Player.stop();
+                $scope.refresh();
             }
             
             $scope.togglePlay = function() {
                 Player.toggle();
+                $scope.refresh();
             }
             
             $scope.mute = function() {
                 Player.mute();
+                $scope.refresh();
+            }
+            
+            $scope.updatePosition = function() {
+                Player.setPosition($scope.position.value);
+                $scope.sound.position = $scope.position.value;
+                $scope.position.onUpdate = false;
             }
             
             $scope.setPlayList = function() {
@@ -45,9 +66,16 @@
                 });
             }
             
-            $interval(function() {
+            $scope.refresh = function() {
                 $scope.state = Player.state;
-            }, 1000);
+                if (!$scope.position.onUpdate) {
+                    $scope.position.value = $scope.sound.position;
+                }
+            }
+            
+            $interval(function() {
+                $scope.refresh();
+            }, 500);
 		}
 	]);
 })();

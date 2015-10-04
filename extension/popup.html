@@ -22,12 +22,12 @@
 							<div class="pl-actions">
 								<i ng-class='{"hidden":(player.volume==0 || player.isMute)}' class="material-icons" ng-click="mute()">&#xE050;</i>
 								<i ng-class='{"hidden":(!player.isMute && player.volume>0)}' class="material-icons" ng-click="mute()">&#xE04F;</i>
-								<input type="range" min="0" max="100" step="1" ng-model="player.volume"/>
+								<input type="range" min="0" max="100" step="1" ng-model="player.volume" ng-change="updateVolume()"/>
 							</div>
 						</div>
 						<div class="controls" style="display:flex;">
-							<input type="range" min="0" max="{{sound.duration}}" step="1" ng-model="sound.position"/>
-							<label class="time">{{sound.position | date:'mm:ss'}}</label>
+							<input type="range" min="0" max="{{sound.duration}}" step="1" ng-model="position.value" ng-change="position.onUpdate = true" ng-mouseup="updatePosition()"/>
+							<label class="time">{{position.value | date:'mm:ss'}}</label>
 							<div class="sd-actions">
 								<i class="material-icons" ng-click="playBack();">&#xE020;</i>
 								<i class="material-icons" ng-click="stopPlay();">&#xE047;</i>

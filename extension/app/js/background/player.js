@@ -91,10 +91,8 @@ var Player = new (function () {
 	}
 
 	this.setPosition = function(position) {
-		var max = playingSound.duration;
-		var newPosition = (position * max) / 1000;
 		if (typeof playingSound !== "undefined") {
-			playingSound.setPosition(newPosition);
+			playingSound.setPosition(position);
 		}
 	}
 	
@@ -123,8 +121,10 @@ var Player = new (function () {
 		var sound = Player.state.playlist.items[Player.state.playlist.index];
 		playingSound = soundManager.createSound({
 			url: sound.url,
-			onplay: function () {
+			onPlay: function() {
 				Player.state.sound.id = sound.id;
+			},
+			onload: function () {
 				Player.state.sound.title = sound.title;
 				Player.state.sound.duration = playingSound.duration;
 				Player.state.player.onPause = false;
