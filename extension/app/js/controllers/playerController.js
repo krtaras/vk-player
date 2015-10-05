@@ -19,6 +19,18 @@
                 onUpdate:false
             }
             
+            $scope.compactViewState = {
+                isCompactView: false,
+                tabs:"",
+                selectedTab: ""
+            }
+            
+            $scope.togglePlayList = function() {
+                Player.state.customProperty.isOpenedPlayList = !Player.state.customProperty.isOpenedPlayList;
+                $scope.compactViewState = Player.state.customProperty.isOpenedPlayList;
+                $scope.loadPlaylist();
+            }
+            
             $scope.updateVolume = function() {
                 Player.setVolume($scope.player.volume);
                 $scope.refresh();
@@ -72,6 +84,18 @@
                     $scope.position.value = $scope.sound.position;
                 }
             }
+            
+            $scope.loadPlaylist = function() {
+                if (Player.state.customProperty.isOpenedPlayList) {
+                    $scope.compactViewState.tabs = "/app/view/tabs.html";
+                    $scope.compactViewState.selectedTab = "/app/view/" + Player.state.customProperty.openTab + ".html";
+                } else {
+                    $scope.compactViewState.tabs = "";
+                    $scope.compactViewState.selectedTab = "";
+                }
+            }
+            
+            $scope.loadPlaylist();
             
             $interval(function() {
                 $scope.refresh();

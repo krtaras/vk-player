@@ -3,7 +3,6 @@
 		<script type="text/javascript" src="app/lib/angular.min.js"></script>
 		<script type="text/javascript" src="app/lib/jquery.min.js"></script>
 		<script type="text/javascript" src="app/js/app.js"></script>
-		<script type="text/javascript" src="app/js/controllers/userAudioController.js"></script>
 		<script type="text/javascript" src="app/js/controllers/playerController.js"></script>
 				
 		<link type="text/css" rel="stylesheet" href="app/theme/css/materialze-icons.css"  media="screen,projection"/>
@@ -42,11 +41,13 @@
 							<i class="material-icons" style="font-size: 18px; margin-left:3px;" ng-click="setPlayList()">&#xE043;</i>
 						</div>
 						<div>
-							<i ng-class='{"active":!compactView}' class="material-icons" style="font-size: 24px;" ng-click="setViewMode()">&#xE8EF;</i>
+							<i ng-class='{"active":!compactViewState.isCompactView}' class="material-icons" style="font-size: 24px;" ng-click="setViewMode()">&#xE8EF;</i>
 						</div>
 					</div>	
 				</div>
 			</div>
 		</div>
+		<div ng-include="compactViewState.tabs"></div>
+		<div ng-include="compactViewState.selectedTab"></div>
 	</body>
 </html>

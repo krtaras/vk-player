@@ -177,3 +177,7 @@ var Player = new (function () {
 		}
 	}
 })();
+Player.state.customProperty = {
+	isOpenedPlayList:true,
+	openTab: "my"
+};
